@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.vscode/
+.version
+
+apps/web/node_modules/
+apps/web/public/llms.txt
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
