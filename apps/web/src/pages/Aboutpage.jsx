@@ -46,13 +46,6 @@ const ArrowLeftIcon = memo(({ size = 16 }) => (
 ));
 ArrowLeftIcon.displayName = "ArrowLeftIcon";
 
-const PlayIcon = memo(() => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <polygon points="5 3 19 12 5 21 5 3" />
-  </svg>
-));
-PlayIcon.displayName = "PlayIcon";
-
 const EnvelopeIcon = memo(() => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -70,22 +63,21 @@ const services = [
 ];
 
 const team = [
-  { name: "James Quinn", role: "Consultant", initials: "JQ", color: "#c8a97e" },
-  { name: "Olivia Smith", role: "Counselor", initials: "OS", color: "#6b8cba" },
-  { name: "Dr. William", role: "Director", initials: "DW", color: "#4a7c6f" },
-  { name: "Sara Thompson", role: "Visa Expert", initials: "ST", color: "#8b6fad" },
+  { name: "Kanwal Ehsan", role: "Accounts Manager", initials: "KE", color: "#5d88a3", image: "/team/kanwal-ehsan-optimized.jpg" },
+  { name: "Madiha", role: "Student Counsellor", initials: "M", color: "#d7c5a8", image: "/team/madiha-optimized.jpg" },
+  { name: "Pakiza", role: "Admission Officer", initials: "P", color: "#3f4a2c", image: "/team/pakiza-optimized.jpg" },
 ];
 
 const coreValues = [
-  { title: "Integrity First", desc: "We prioritize honesty and transparency in all our services, ensuring trust at every step." },
-  { title: "Client-Centered", desc: "Our focus is always on the success and satisfaction of our clients, tailoring solutions to their unique needs." },
-  { title: "Go Through our Recent Blogs Articles", desc: "We strive for the highest quality in every service we provide, ensuring top-notch results." },
+  { title: "95%+ Document Readiness Target", desc: "Every admission and visa file is reviewed against a structured checklist before submission to reduce avoidable gaps." },
+  { title: "1:1 Pathway Planning", desc: "Students, families, and skilled migrants receive tailored education, migration, and travel guidance based on their profile." },
+  { title: "24-48 Hour Response Window", desc: "Our team keeps applicants updated quickly so deadlines, missing documents, and travel steps stay under control." },
 ];
 
 const achievements = [
-  { title: "Achievement 1", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { title: "Achievement 2", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { title: "Achievement 3", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { title: "2,500+ Applications Guided", desc: "Demo figure covering student admissions, visitor visas, skilled pathways, and family migration support." },
+  { title: "60+ Institution Pathways", desc: "Demo figure representing university, college, English test, accommodation, and travel support partners." },
+  { title: "15+ Visa & Study Categories", desc: "Student visas, visitor visas, skills assessments, employer pathways, family visas, PTE, NAATI, and settlement services." },
 ];
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
@@ -251,10 +243,10 @@ const ValuesSection = memo(() => (
           className="text-[#000073] font-bold mb-4 leading-snug text-2xl sm:text-[30px]"
           style={{ fontFamily: "Inter, sans-serif" }}
         >
-          Explore the core values of Career Upwork
+          Numbers that define how we support your journey
         </h2>
         <p className="text-[14px] text-gray-500 leading-[1.8] max-w-[480px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Sky Consultant combines certified education guidance, migration planning, and travel support into one practical pathway. These demo numbers show the level of structure, responsiveness, and care clients should expect from a specialist consultancy.
         </p>
       </div>
       <div className="flex-1">
@@ -279,10 +271,10 @@ const ValuesSection = memo(() => (
           className="text-[#000073] font-bold mb-4 leading-snug text-2xl sm:text-[30px]"
           style={{ fontFamily: "Inter, sans-serif" }}
         >
-          Achievements of Bridge Career
+          Consultancy impact across education, migration, and travel
         </h2>
         <p className="text-[14px] text-gray-500 leading-[1.8] max-w-[480px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          From course selection and admission files to visa documentation and arrival planning, our process is built around clear steps, measurable preparation, and confident decisions.
         </p>
       </div>
     </div>
@@ -294,6 +286,8 @@ ValuesSection.displayName = "ValuesSection";
 // ─── Team Card ────────────────────────────────────────────────────────────────
 const TeamCard = memo(({ member, index }) => {
   const [hovered, setHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -308,25 +302,33 @@ const TeamCard = memo(({ member, index }) => {
         transform: hovered ? "translateY(-4px)" : "none",
       }}
     >
-      <div
-        className="h-40 sm:h-44 relative flex items-center justify-center"
-        style={{ background: `linear-gradient(135deg, ${member.color}aa, ${member.color}44)` }}
-      >
-        <div
-          className="w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full flex items-center justify-center text-white text-xl sm:text-[22px] font-bold border-[3px] border-white/50"
-          style={{ background: member.color, fontFamily: "Inter, sans-serif" }}
-        >
-          {member.initials}
-        </div>
+      <div className="h-64 sm:h-72 lg:h-80 relative flex items-center justify-center overflow-hidden bg-gray-100">
+        {member.image && !imageError ? (
+          <img
+            src={member.image}
+            alt={`${member.name}, ${member.role}`}
+            onError={() => setImageError(true)}
+            className="w-full h-full object-cover object-center transition-transform duration-700 ease-out"
+            style={{ transform: hovered ? "scale(1.04)" : "scale(1)" }}
+          />
+        ) : (
+          <div
+            className="w-full h-full flex items-center justify-center"
+            style={{ background: `linear-gradient(135deg, ${member.color}aa, ${member.color}44)` }}
+          >
+            <div
+              className="w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full flex items-center justify-center text-white text-xl sm:text-[22px] font-bold border-[3px] border-white/50"
+              style={{ background: member.color, fontFamily: "Inter, sans-serif" }}
+            >
+              {member.initials}
+            </div>
+          </div>
+        )}
         {hovered && (
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-            className="absolute inset-0 bg-[rgba(0,0,115,0.4)] flex items-center justify-center"
-          >
-            <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#000073]">
-              <PlayIcon />
-            </div>
-          </motion.div>
+            className="absolute inset-0 bg-gradient-to-t from-[#000073]/35 via-transparent to-white/10"
+          />
         )}
       </div>
       <div className="px-4 py-3.5 bg-white">
@@ -373,7 +375,7 @@ const TeamSection = memo(() => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
         {team.slice(page * 4, page * 4 + 4).map((member, i) => (
           <TeamCard key={member.name} member={member} index={i} />
         ))}
@@ -405,7 +407,7 @@ const SubscribeBanner = memo(() => (
             Subscribe Now
           </h2>
           <p className="text-gray-300 text-[13px] sm:text-[14px] leading-[1.7] m-0">
-            Personalized coaching, proven strategies, and expert trainers to help you succeed on your first attempt.
+            Get practical updates on admissions, visa planning, travel preparation, and settlement guidance from certified education and migration consultants.
           </p>
           <div className="flex items-center bg-white rounded-lg overflow-hidden w-full max-w-[420px] h-11 mt-2">
             <div className="flex items-center gap-2 px-3.5 flex-1">

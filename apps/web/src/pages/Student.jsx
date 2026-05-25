@@ -132,7 +132,7 @@ const Hero = () => (
         {/* CTA */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }}>
           <a
-            href="#contact"
+            href="/contact"
             style={{
               display: "inline-block", background: "#B11212", color: "#ffffff",
               padding: "13px 28px", borderRadius: "6px", fontWeight: 600,

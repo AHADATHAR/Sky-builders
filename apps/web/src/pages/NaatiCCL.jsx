@@ -96,7 +96,7 @@ borderRadius:"20px",
 
       <motion.div {...fadeUp(0.24)}>
         <a
-          href="#contact"
+          href="/contact"
           className="inline-block font-semibold text-sm px-7 py-3 rounded-lg text-white transition-opacity hover:opacity-88"
           style={{ background: RED }}
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
@@ -484,7 +484,7 @@ const ReadyBanner = () => (
       </motion.p>
       <motion.div {...fadeUp(0.18)}>
         <a
-          href="#contact"
+          href="/contact"
           className="inline-block font-bold px-10 py-3 rounded-lg text-white text-sm"
           style={{ background: RED }}
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}

@@ -3,12 +3,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer.jsx';
 import Header from './components/Header.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
+import ScrollAtmosphere from './components/ScrollAtmosphere.jsx';
+import ContactCtaRouter from './components/ContactCtaRouter.jsx';
 import { Toaster } from './components/ui/toaster.jsx';
 import HomePage from './pages/HomePage.jsx';
 
 const AboutPage = lazy(() => import('./pages/Aboutpage.jsx'));
 const ContactPage = lazy(() => import('./pages/ContactPage.jsx'));
 const BlogPage = lazy(() => import('./pages/BlogPage.jsx'));
+const BlogDetailPage = lazy(() => import('./pages/BlogDetailPage.jsx'));
 const AustraliaAdmissionPage = lazy(() => import('./pages/AdmissionPage.jsx'));
 const AustraliaVisaPage = lazy(() => import('./pages/VisaPage.jsx'));
 const SkillsAssessmentPage = lazy(() => import('./pages/SkillPage.jsx'));
@@ -49,7 +52,9 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex min-h-screen flex-col">
+      <ScrollAtmosphere />
+      <ContactCtaRouter />
+      <div className="relative z-10 flex min-h-screen flex-col">
         <Header />
         <main className="flex-grow">
           <Suspense fallback={<RouteFallback />}>
@@ -58,6 +63,7 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogDetailPage />} />
               <Route path="/addmission" element={<AustraliaAdmissionPage />} />
               <Route path="/visa" element={<AustraliaVisaPage />} />
               <Route path="/skill" element={<SkillsAssessmentPage />} />

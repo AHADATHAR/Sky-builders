@@ -15,6 +15,7 @@ import Destination from "@/components/Destination";
 import CoreServices from '@/components/CoreServices';
 import FAQSection from '@/components/FAQSection';
 import Testimonal from '@/components/Testimonal';
+import { blogArticles } from '@/data/blogs';
 
 // ─── Memoized sub-components ───────────────────────────────────────────────
 
@@ -37,30 +38,32 @@ const WhyCardDark = memo(({ icon: Icon, title, desc }) => (
 WhyCardDark.displayName = 'WhyCardDark';
 
 const BlogRow = memo(({ blog, index }) => (
-  <motion.div
+  <motion.article
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay: index * 0.1 }}
     className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-start group cursor-pointer"
   >
-    <div className="relative flex-shrink-0 w-full sm:w-[220px] md:w-[280px] h-[200px] sm:h-[160px] md:h-[180px] rounded-2xl overflow-hidden">
-      <img
-        src={blog.image}
-        alt={blog.title}
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        loading="lazy"
-      />
-      <span className="absolute top-3 left-3 bg-white text-gray-700 text-xs font-medium px-3 py-1 rounded-full shadow font-[Inter,sans-serif]">
-        {blog.date}
-      </span>
-    </div>
-    <div className="flex flex-col justify-center py-1 sm:py-2">
-      <h3 className="text-lg sm:text-xl font-bold text-[#022279] mb-2 sm:mb-3 group-hover:text-[#022279] transition-colors font-[Inter,sans-serif]">
-        {blog.title}
-      </h3>
-      <p className="text-gray-600 text-sm leading-relaxed font-[Inter,sans-serif]">{blog.description}</p>
-    </div>
-  </motion.div>
+    <Link to={`/blog/${blog.slug}`} className="contents">
+      <div className="relative flex-shrink-0 w-full sm:w-[220px] md:w-[280px] h-[200px] sm:h-[160px] md:h-[180px] rounded-2xl overflow-hidden">
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+        <span className="absolute top-3 left-3 bg-white text-gray-700 text-xs font-medium px-3 py-1 rounded-full shadow font-[Inter,sans-serif]">
+          {blog.date}
+        </span>
+      </div>
+      <div className="flex flex-col justify-center py-1 sm:py-2">
+        <h3 className="text-lg sm:text-xl font-bold text-[#022279] mb-2 sm:mb-3 group-hover:text-[#B11212] transition-colors font-[Inter,sans-serif]">
+          {blog.title}
+        </h3>
+        <p className="text-gray-600 text-sm leading-relaxed font-[Inter,sans-serif]">{blog.description}</p>
+      </div>
+    </Link>
+  </motion.article>
 ));
 BlogRow.displayName = 'BlogRow';
 
@@ -118,29 +121,7 @@ const HomePage = () => {
     }
   }, []);
 
-  const blogs = useMemo(() => [
-    {
-      title: 'Study in Canada: Complete Guide 2025',
-      date: 'March 5, 2026',
-      image: 'https://i.ibb.co/5Xz94Ngx/4719912aac081f5ecb6dc4a99387d510904b6a9c.jpg',
-      description:
-        'Planning to study in Canada? This complete 2025 guide covers universities, tuition fees, scholarships, visa process, and student life to help you start your international education journey with confidence.',
-    },
-    {
-      title: 'Top Universities in Australia',
-      date: 'March 3, 2026',
-      image: 'https://i.ibb.co/qLWhd3r5/93c2af7f970299361f0d6a576f774ed56b14e56b.jpg',
-      description:
-        'Explore the top-ranked universities in Australia including admission requirements, popular courses, tuition fees, and why Australia is a leading destination for international students.',
-    },
-    {
-      title: 'Visa Application Tips',
-      date: 'March 1, 2026',
-      image: 'https://i.ibb.co/YFmPc8NL/0d9ac426bd02ff636d63f08da00e8a371657f702.jpg',
-      description:
-        'Avoid common mistakes and increase your chances of approval with these expert visa application tips, including document preparation, interview guidance, and step-by-step process insights.',
-    },
-  ], []);
+  const blogs = blogArticles.slice(0, 3);
 
   const whyTopCards = useMemo(() => [
     {

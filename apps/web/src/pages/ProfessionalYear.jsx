@@ -357,7 +357,7 @@ const Support = () => (
       {/* CTA button */}
       <motion.div {...fadeUp(0.2)} className="mt-12 flex justify-center">
         <a
-          href="#contact"
+          href="/contact"
           className="inline-block font-semibold text-sm px-8 py-3 rounded-lg text-white transition-opacity hover:opacity-90"
           style={{ background: NAVY }}
         >
@@ -384,7 +384,7 @@ const ReadyBanner = () => (
       </motion.p>
       <motion.div {...fadeUp(0.18)}>
         <a
-          href="#contact"
+          href="/contact"
           className="inline-block font-bold px-10 py-3 rounded-lg text-white text-sm transition-opacity hover:opacity-90"
           style={{ background: RED }}
         >

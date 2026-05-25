@@ -45,8 +45,8 @@ const Hero = () => (
       </h1>
 
       <p className="text-[13px] text-[#e5e7eb] leading-[1.6] max-w-[340px] font-[Inter,sans-serif]">
-        Personalised coaching, proven strategies, and expert consultants to
-        help you succeed on your journey.
+        Speak with certified education and migration consultants for admissions,
+        visa planning, travel preparation, and settlement support.
       </p>
     </div>
   </motion.section>
@@ -71,7 +71,7 @@ const MapInfo = () => (
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        title="Sky Consultants — 598 Albany Hwy, Victoria Park WA 6100"
+        title="Sky Consultants - Perth Office"
       />
     </motion.div>
 
@@ -104,8 +104,8 @@ const MapInfo = () => (
         {
           icon: Mail,
           label: 'Email Us',
-          value: 'offshore@skyconsultant.com',
-          href: 'mailto:offshore@skyconsultant.com',
+          value: 'Info@skyconsultant.com',
+          href: 'mailto:Info@skyconsultant.com',
         },
         {
           icon: Phone,
@@ -115,9 +115,17 @@ const MapInfo = () => (
         },
         {
           icon: MapPin,
-          label: 'Visit Us',
+          label: 'Adelaide Office',
           value:
-            'SKY CONSULTANTS, 598 Albany Hwy, Victoria Park WA 6100, Australia',
+            'Suite 103A, Level 10, 118 King William Street, Adelaide SA 5000',
+          href:
+            'https://www.google.com/maps/search/?api=1&query=Suite%20103A%20Level%2010%20118%20King%20William%20Street%20Adelaide%20SA%205000',
+        },
+        {
+          icon: MapPin,
+          label: 'Perth Office',
+          value:
+            '598 Albany Hwy, Victoria Park WA 6100',
           href:
             'https://www.google.com/maps/place/SKY+CONSULTANTS/@-31.979376,115.8998388,17z',
         },
@@ -125,7 +133,7 @@ const MapInfo = () => (
         <a
           key={label}
           href={href}
-          target={label === 'Visit Us' ? '_blank' : undefined}
+          target={label.includes('Office') ? '_blank' : undefined}
           rel="noopener noreferrer"
           className={`flex items-start gap-3 py-3 border-t border-[#E5E7EB] hover:bg-[#f9fafb] transition-colors duration-150 rounded-md px-1 -mx-1
             ${i === arr.length - 1 ? 'border-b' : ''}`}

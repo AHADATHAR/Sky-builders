@@ -29,8 +29,8 @@ const Footer = () => {
   const contactInfo = [
     {
       icon: Mail,
-      text: 'offshore@skyconsultant.com',
-      href: 'mailto: offshore@skyconsultant.com',
+      text: 'Info@skyconsultant.com',
+      href: 'mailto:Info@skyconsultant.com',
     },
     {
       icon: Phone,
@@ -39,7 +39,12 @@ const Footer = () => {
     },
     {
       icon: MapPin,
-      text: 'SKY CONSULTANTS, 598 Albany Hwy, Victoria Park WA 6100, Australia',
+      text: 'Adelaide Office: Suite 103A, Level 10, 118 King William Street, Adelaide SA 5000',
+      href: 'https://www.google.com/maps/search/?api=1&query=Suite%20103A%20Level%2010%20118%20King%20William%20Street%20Adelaide%20SA%205000',
+    },
+    {
+      icon: MapPin,
+      text: 'Perth Office: 598 Albany Hwy, Victoria Park WA 6100',
       href: 'https://www.google.com/maps/place/SKY+CONSULTANTS/@-31.979376,115.8998388,17z',
     },
   ];
@@ -191,7 +196,7 @@ const Footer = () => {
         {/* Bottom copyright */}
         <div className="border-t border-gray-300 pt-8 text-center">
           <p className="text-[#0F172A] hover:text-[#DC2626] text-sm transition-colors duration-200">
-            © 2025 Sky Consultant. All rights reserved.
+            © 2026 Sky Consultant. All rights reserved.
           </p>
         </div>
       </div>

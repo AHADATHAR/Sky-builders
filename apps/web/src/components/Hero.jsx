@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Hero = () => {
@@ -63,18 +64,22 @@ const Hero = () => {
             Migration, and Sponsorship Opportunities in Australia.
           </motion.p>
 
-          <motion.button
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25 }}
-            className="font-['Poppins'] bg-[#B11212] text-white rounded-lg font-semibold border-none cursor-pointer tracking-[0.01em] transition-colors duration-200 hover:bg-[#8f0f0f]
-                       px-[22px] py-[10px] text-[13px]
-                       sm:px-[26px] sm:py-[11px] sm:text-sm
-                       lg:px-[30px] lg:py-3 lg:text-[15px]
-                       xl:px-8 xl:py-[13px]"
           >
-            Contact Now
-          </motion.button>
+            <Link
+              to="/contact"
+              className="inline-block font-['Poppins'] bg-[#B11212] text-white rounded-lg font-semibold border-none cursor-pointer tracking-[0.01em] transition-colors duration-200 hover:bg-[#8f0f0f]
+                         px-[22px] py-[10px] text-[13px]
+                         sm:px-[26px] sm:py-[11px] sm:text-sm
+                         lg:px-[30px] lg:py-3 lg:text-[15px]
+                         xl:px-8 xl:py-[13px]"
+            >
+              Contact Now
+            </Link>
+          </motion.div>
 
         </div>
       </div>
