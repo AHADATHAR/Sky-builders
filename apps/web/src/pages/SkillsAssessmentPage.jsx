@@ -108,29 +108,48 @@ const supportSteps = [
 // ── Section 1: Hero ────────────────────────────────────────────────────────
 function HeroSection() {
   return (
-    <section className="w-full relative overflow-hidden" style={{ minHeight: 380 }}>
-      <div className="absolute inset-0 z-0"
-        style={{ background: "linear-gradient(120deg,rgba(10,20,50,0.88) 55%,rgba(30,50,100,0.60) 100%)" }} />
-      <div className="absolute inset-0 z-0"
-        style={{ background: "linear-gradient(135deg,#1a2a5e 0%,#2d3e80 50%,#4a5fa0 100%)", opacity: 0.55 }} />
-      <div className="absolute right-0 top-0 bottom-0 w-2/3 z-0"
-        style={{ background: "linear-gradient(to left, rgba(70,90,140,0.45), transparent)" }} />
+    <section className="w-[95%] mx-auto rounded-xl  mt-[90px] relative overflow-hidden" style={{ minHeight: 420 }}>
+  
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 z-0"
+    style={{
+      backgroundImage: "url('https://i.ibb.co/Jj5qPByt/7751f0872e8727b619adbd2bbd00c911433d4fd6-2.jpg')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+  />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-14 sm:py-20">
-        <div className="inline-flex items-center border border-gray-400 rounded-full px-4 py-1 mb-6">
-          <span className="text-gray-300 text-xs tracking-widest uppercase font-medium">Skills Assessment</span>
-        </div>
-        <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-3 max-w-xl">
-          Skills Assessment
-        </h1>
-        <p className="text-gray-200 text-base sm:text-lg lg:text-xl font-semibold mb-8 max-w-lg leading-snug">
-          Your First Step Toward Skilled Migration in Australia
-        </p>
-        <button className="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-6 py-3 rounded transition-colors">
-          Contact for Consultation
-        </button>
-      </div>
-    </section>
+  {/* Dark overlay to keep text readable */}
+  <div
+    className="absolute inset-0 z-0"
+    style={{ background: "linear-gradient(120deg,rgba(10,20,50,0.88) 55%,rgba(30,50,100,0.55) 100%)" }}
+  />
+  <div
+    className="absolute inset-0 z-0"
+    style={{ background: "linear-gradient(135deg,#1a2a5e 0%,#2d3e80 50%,#4a5fa0 100%)", opacity: 0.45 }}
+  />
+  <div
+    className="absolute right-0 top-0 bottom-0 w-2/3 z-0"
+    style={{ background: "linear-gradient(to left, rgba(70,90,140,0.35), transparent)" }}
+  />
+
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-14 sm:py-20">
+    <div className="inline-flex items-center border border-gray-400 rounded-full px-4 py-1 mb-6">
+      <span className="text-gray-300 text-xs tracking-widest uppercase font-medium">Skills Assessment</span>
+    </div>
+    <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-3 max-w-xl">
+      Skills Assessment
+    </h1>
+    <p className="text-gray-200 text-base sm:text-lg lg:text-xl font-semibold mb-8 max-w-lg leading-snug">
+      Your First Step Toward Skilled Migration in Australia
+    </p>
+    <button className="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-6 py-3 rounded transition-colors">
+      Contact for Consultation
+    </button>
+  </div>
+</section>
   );
 }
 
@@ -292,7 +311,7 @@ function HowWeHelpSection() {
 // ── Section 6: CTA Banner ──────────────────────────────────────────────────
 function CTASection() {
   return (
-    <section className="w-full py-14 sm:py-20"
+    <section className="w-[95%] mx-auto rounded-xl mb-[40px] py-14 sm:py-20"
       style={{ background: "linear-gradient(120deg,#0f1b3d 0%,#1a2a5e 55%,#2d1b4e 100%)" }}>
       <div className="max-w-3xl mx-auto px-4 sm:px-8 text-center">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
@@ -310,7 +329,7 @@ function CTASection() {
 }
 
 // ── Main Page ──────────────────────────────────────────────────────────────
-export default function SkillsAssessmentPage() {
+export default function SkillsAssessmentPage2() {
   return (
     <div className="w-full min-h-screen font-sans">
       <HeroSection />

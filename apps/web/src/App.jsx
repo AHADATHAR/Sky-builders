@@ -7,6 +7,7 @@ import ScrollAtmosphere from './components/ScrollAtmosphere.jsx';
 import ContactCtaRouter from './components/ContactCtaRouter.jsx';
 import { Toaster } from './components/ui/toaster.jsx';
 import HomePage from './pages/HomePage.jsx';
+import SkillsAssessmentPage2 from './pages/SkillsAssessmentPage.jsx';
 
 const AboutPage = lazy(() => import('./pages/Aboutpage.jsx'));
 const ContactPage = lazy(() => import('./pages/ContactPage.jsx'));
@@ -66,14 +67,14 @@ function App() {
               <Route path="/blog/:slug" element={<BlogDetailPage />} />
               <Route path="/addmission" element={<AustraliaAdmissionPage />} />
               <Route path="/visa" element={<AustraliaVisaPage />} />
-              <Route path="/skill" element={<SkillsAssessmentPage />} />
+              <Route path="/skill" element={<SkillsAssessmentPage2 />} />
               <Route path="/student" element={<Student />} />
               <Route path="/professionalYear" element={<ProfessionalYear />} />
               <Route path="/naatl" element={<NaatiCCL />} />
               <Route path="/ptePrepration" element={<PTEPreparation />} />
               <Route path="/studentAccomodation" element={<StudentAccommodationPage />} />
               <Route path="/oba" element={<OBANursesPage />} />
-              <Route path="/skillassessment" element={<SkillsAssessmentPage />} />
+              <Route path="/skillassessment" element={<SkillsAssessmentPage2 />} />
               <Route path="/taxReturn" element={<TaxReturnPage />} />
               <Route path="/visa485" element={<VisaPage485 />} />
               <Route path="/visa486" element={<StudentVisa500 />} />

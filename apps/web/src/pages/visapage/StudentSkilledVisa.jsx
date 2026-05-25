@@ -41,7 +41,7 @@ function Hero() {
       }}>
         <div style={{
           position: 'absolute', inset: 0,
-          backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80')",
+          backgroundImage: "url('https://i.ibb.co/Jj5qPByt/7751f0872e8727b619adbd2bbd00c911433d4fd6-2.jpg')",
           backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
           opacity: 0.4,
         }} />
