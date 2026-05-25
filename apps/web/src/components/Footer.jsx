@@ -73,7 +73,7 @@ const Footer = () => {
             </div>
 
             {/* Description */}
-            <p className="text-[#022279] text-sm leading-relaxed hover:text-[#DC2626] transition-colors duration-200">
+            <p className="text-gray-800 text-sm leading-relaxed hover:text-[#DC2626] transition-colors duration-200">
               Empowering global ambitions through expert visa consultancy and academic
               guidance. We bridge the gap between your local potential and international
               opportunities.
@@ -170,26 +170,8 @@ const Footer = () => {
             </div>
 
             {/* Google Map */}
-            <div className="rounded-lg overflow-hidden border border-gray-300 mt-1">
-              <iframe
-                src={mapEmbedUrl}
-                width="100%"
-                height="160"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Sky Consultants Location"
-              />
-            </div>
+            
 
-            {/* CTA Button */}
-            <a
-              href="/contact"
-              className="w-full bg-[#022279] hover:bg-[#DC2626] text-white text-xs font-bold tracking-widest uppercase text-center py-4 rounded transition-colors duration-200"
-            >
-              Contact for Consultation
-            </a>
           </div>
         </div>
 

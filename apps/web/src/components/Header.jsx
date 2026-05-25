@@ -23,18 +23,12 @@ const menuItems = [
       { name: "Global Talent Program",           path: "/globalTalentProgram"        },
       { name: "Training Visa",                   path: "/trainingVisa"               },
       { name: "Temporary Skill Shortage Visa",   path: "/temporarySkillShortageVisa" },
-            { name: "Temporary Graduate Visa",   path: "/temporaryGraduateVisa" },
-             { name: "Partner Visa Page",   path: "/partnerVisaPage" },
-             { name: "Partner Visa 820 and 801",   path: "/partnerVisa820and801" },
-                          { name: "Employer Nomination Visa 186",   path: "/employerNominationVisa186" },
-
-
-
-                       
-
+      { name: "Temporary Graduate Visa",         path: "/temporaryGraduateVisa"      },
+      { name: "Partner Visa Page",               path: "/partnerVisaPage"            },
+      { name: "Partner Visa 820 and 801",        path: "/partnerVisa820and801"       },
+      { name: "Employer Nomination Visa 186",    path: "/employerNominationVisa186"  },
     ],
   },
-  
   {
     name: "Student Services",
     path: "/Student",
@@ -42,8 +36,8 @@ const menuItems = [
       { name: "Health Insurance",          path: "/student"             },
       { name: "Professional Year Program", path: "/ProfessionalYear"    },
       { name: "NaatlCCL",                  path: "/naatl"               },
-      { name: "PTE Prepration",            path: "/ptePrepration"       },
-      { name: "Accomodation",              path: "/studentAccomodation" },
+      { name: "PTE Preparation",           path: "/ptePrepration"       },
+      { name: "Accommodation",             path: "/studentAccomodation" },
       { name: "OBA",                       path: "/oba"                 },
       { name: "Skill Assessment",          path: "/skillassessment"     },
       { name: "Tax Return",                path: "/taxReturn"           },
@@ -69,6 +63,21 @@ const visaIcons = {
   "Global Talent Program":        "ti-star",
   "Training Visa":                "ti-clipboard",
   "Temporary Skill Shortage Visa":"ti-clock",
+  "Temporary Graduate Visa":      "ti-school",
+  "Partner Visa Page":            "ti-heart-handshake",
+  "Partner Visa 820 and 801":     "ti-rings-wedding",
+  "Employer Nomination Visa 186": "ti-building-skyscraper",
+};
+
+const studentIcons = {
+  "Health Insurance":          "ti-shield-heart",
+  "Professional Year Program": "ti-briefcase",
+  "NaatlCCL":                  "ti-language",
+  "PTE Preparation":           "ti-pencil",
+  "Accommodation":             "ti-home",
+  "OBA":                       "ti-chart-bar",
+  "Skill Assessment":          "ti-certificate",
+  "Tax Return":                "ti-receipt-tax",
 };
 
 // ── Plain desktop nav link ─────────────────────────────────────────────────
@@ -103,7 +112,20 @@ const DropdownNavLink = memo(({ item, isActive }) => {
 
   useEffect(() => () => clearTimeout(timerRef.current), []);
 
-  const isVisaMenu = item.name === "Visa";
+  const isVisaMenu    = item.name === "Visa";
+  const isStudentMenu = item.name === "Student Services";
+  const isGridMenu    = isVisaMenu || isStudentMenu;
+
+  // Visa: 3 cols wide panel; Student: 2 cols narrower panel
+  const panelMinWidth  = isVisaMenu ? "520px" : isStudentMenu ? "420px" : "200px";
+  const gridCols       = isVisaMenu ? "repeat(3, 1fr)" : "repeat(2, 1fr)";
+  const panelLeft      = isGridMenu ? "-120px" : "50%";
+  const panelTransform = isGridMenu ? "none" : "translateX(-50%)";
+  const caretLeft      = isGridMenu ? "140px" : "50%";
+  const caretTransform = isGridMenu ? "rotate(45deg)" : "translateX(-50%) rotate(45deg)";
+
+  const iconMap = isVisaMenu ? visaIcons : studentIcons;
+  const categoryLabel = isVisaMenu ? "Visa Categories" : "Student Services";
 
   return (
     <div style={{ position: "relative" }} onMouseEnter={enter} onMouseLeave={leave}>
@@ -145,17 +167,17 @@ const DropdownNavLink = memo(({ item, isActive }) => {
           style={{
             position: "absolute",
             top: "calc(100% + 14px)",
-            left: isVisaMenu ? "-120px" : "50%",
-            transform: isVisaMenu ? "none" : "translateX(-50%)",
+            left: panelLeft,
+            transform: panelTransform,
             background: "#ffffff",
             border: "1px solid rgba(2,34,121,0.10)",
             borderRadius: "12px",
             boxShadow: "0 8px 28px rgba(2,34,121,0.12)",
-            minWidth: isVisaMenu ? "520px" : "200px",
+            minWidth: panelMinWidth,
             zIndex: 100,
             overflow: "hidden",
             animation: "hdrFadeDown 0.15s ease",
-            padding: isVisaMenu ? "8px" : "0",
+            padding: isGridMenu ? "8px" : "0",
           }}
         >
           {/* caret arrow */}
@@ -163,10 +185,8 @@ const DropdownNavLink = memo(({ item, isActive }) => {
             style={{
               position: "absolute",
               top: "-6px",
-              left: isVisaMenu ? "140px" : "50%",
-              transform: isVisaMenu
-                ? "rotate(45deg)"
-                : "translateX(-50%) rotate(45deg)",
+              left: caretLeft,
+              transform: caretTransform,
               width: "11px",
               height: "11px",
               background: "#ffffff",
@@ -176,8 +196,8 @@ const DropdownNavLink = memo(({ item, isActive }) => {
             }}
           />
 
-          {isVisaMenu ? (
-            /* ── Grid layout for Visa ── */
+          {isGridMenu ? (
+            /* ── Grid layout for Visa & Student Services ── */
             <>
               <p
                 style={{
@@ -190,12 +210,12 @@ const DropdownNavLink = memo(({ item, isActive }) => {
                   margin: 0,
                 }}
               >
-                Visa Categories
+                {categoryLabel}
               </p>
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)",
+                  gridTemplateColumns: gridCols,
                   gap: "2px",
                 }}
               >
@@ -225,7 +245,7 @@ const DropdownNavLink = memo(({ item, isActive }) => {
                     }}
                   >
                     <i
-                      className={`ti ${visaIcons[child.name] || "ti-file"}`}
+                      className={`ti ${iconMap[child.name] || "ti-file"}`}
                       aria-hidden="true"
                       style={{ fontSize: "15px", color: "#DC2626", flexShrink: 0 }}
                     />
@@ -484,6 +504,13 @@ const Header = () => {
 
                       /* ── accordion for dropdown items ── */
                       if (item.dropdown) {
+                        const iconMap =
+                          item.name === "Visa"
+                            ? visaIcons
+                            : item.name === "Student Services"
+                            ? studentIcons
+                            : {};
+
                         return (
                           <div key={item.path}>
                             <button
@@ -556,9 +583,9 @@ const Header = () => {
                                         "transparent")
                                     }
                                   >
-                                    {item.name === "Visa" && (
+                                    {iconMap[child.name] && (
                                       <i
-                                        className={`ti ${visaIcons[child.name] || "ti-file"}`}
+                                        className={`ti ${iconMap[child.name]}`}
                                         aria-hidden="true"
                                         style={{ fontSize: "14px", color: "#DC2626", flexShrink: 0 }}
                                       />
